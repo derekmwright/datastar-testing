@@ -19,7 +19,7 @@ func Site(targetView string) Node {
 				Script().Src("https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"),
 			),
 			Body(
-				Div().Id("app-view").Data("on-load", "@get('"+targetView+"')"),
+				Div().Id("app-view").Data("on-load", "@get('/"+targetView+"')"),
 			).Class("text-gray-200"),
 		).Id("page-root").Lang("en").Class("h-dvh bg-gray-900"),
 	)
