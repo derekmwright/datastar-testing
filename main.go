@@ -1,10 +1,8 @@
 package main
 
 import (
-	"encoding/gob"
 	"log/slog"
 	"os"
-	"time"
 
 	"github.com/alexedwards/scs/v2"
 	"github.com/jackc/pgx/v5/pgxpool"
@@ -26,7 +24,8 @@ type application struct {
 }
 
 func main() {
-	gob.Register(time.Time{})
+	// Register any types serialized into session data here, example:
+	// gob.Register(time.Time{})
 
 	app := &application{
 		logger: slog.New(slog.NewJSONHandler(os.Stdout, nil)),
