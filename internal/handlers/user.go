@@ -7,7 +7,7 @@ import (
 
 	"github.com/starfederation/datastar-go/datastar"
 
-	"dstartest/internal/views"
+	"exampleapp/internal/views"
 )
 
 func UserProfile() http.HandlerFunc {

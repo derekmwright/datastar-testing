@@ -1,4 +1,4 @@
-module dstartest
+module exampleapp
 
 go 1.24.5
 

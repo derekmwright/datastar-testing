@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"dstartest/internal/views"
+	"exampleapp/internal/views"
 )
 
 func Health(ready bool) http.HandlerFunc {

@@ -16,7 +16,7 @@ import (
 	"github.com/nats-io/nats.go"
 	"github.com/nats-io/nats.go/jetstream"
 
-	"dstartest/internal/natsstore"
+	"exampleapp/internal/natsstore"
 )
 
 func (app *application) serve() error {
