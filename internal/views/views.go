@@ -1,25 +1,27 @@
-package main
+package views
 
 import (
 	. "github.com/derekmwright/htemel"
 	. "github.com/derekmwright/htemel/html"
 )
 
+// These views use my own HTML package, you can easily swap this out for your own preferred package.
+
 // Site takes a targetView string which informs datastar which view to request from the backend.
 // This view should only be called during full page reloads.
-func Site(targetView string) Node {
+func Site(targetURL string) Node {
 	return Group(
 		GenericVoid("!DOCTYPE", map[string]any{"html": nil}),
 		Html(
 			Head(
 				Meta().Charset("utf-8"),
 				Meta().Name("viewport").Content("width=device-width, initial-scale=1"),
-				Title(Text("Data-Star Testing")),
+				Title(Text("Example App")),
 				Script().Type("module").Src("https://cdn.jsdelivr.net/gh/starfederation/datastar@main/bundles/datastar.js"),
 				Script().Src("https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"),
 			),
 			Body(
-				Div().Id("app-view").Data("on-load", "@get('/"+targetView+"')"),
+				Div().Id("app-view").Data("on-load", "@get('"+targetURL+"')"),
 			).Class("text-gray-200"),
 		).Id("page-root").Lang("en").Class("h-dvh bg-gray-900"),
 	)
@@ -29,7 +31,7 @@ func Site(targetView string) Node {
 func LandingPage() Node {
 	return Div(
 		SiteNav("landing-page"),
-		H1(Text("Welcome to the home page")).Class("text-xl font-semibold"),
+		H1(Text("Welcome to the example app")).Class("text-xl font-semibold"),
 	).Id("app-view")
 }
 
@@ -37,7 +39,7 @@ func LandingPage() Node {
 func UserProfile() Node {
 	return Div(
 		SiteNav("user-profile"),
-		H1(Text("User profile")).Class("text-xl font-semibold"),
+		H1(Text("Example user profile page")).Class("text-xl font-semibold"),
 	).Id("app-view")
 }
 
@@ -46,7 +48,7 @@ func SiteNav(activeUrl string) Node {
 		Nav(
 			Ul(
 				NavLink("Home", "/landing-page", activeUrl == "landing-page"),
-				NavLink("User Profile", "/user-profile", activeUrl == "user-profile"),
+				NavLink("User Profile", "/user/profile", activeUrl == "user-profile"),
 			),
 		),
 	).Id("navigation-container")

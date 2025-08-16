@@ -1,2 +1,4 @@
 tmp
+data/*
+!data/.keep
 .idea
